@@ -1,3 +1,9 @@
+
+(*Gary Tsai*)
+(*SML Project*)
+
+(* Question 2 *)
+
 fun fact(x,0) = x
 |   fact(0,y) = 0
 |   fact(x,y) = if y <= x then x else y * fact (x,y-1);
@@ -9,12 +15,20 @@ fun c(n,0) = 0
 
 
 
+
+
+(*Question 3*)
+
 fun cut(m,[]) = []
      | cut(m,n::l) = if m=n then cut(m,l) else n::cut(m,l);
 
 fun rem_duplicate [] = []
      | rem_duplicate (m::l) = m::rem_duplicate(cut(m,l)); 
 
+
+
+
+(*Question 1*)
 
 fun divide (pivot, []) = ([], [])
 
@@ -29,10 +43,14 @@ fun divide (pivot, []) = ([], [])
 fun quicksort ([]) = []
   | quicksort (p::[]) =[p]
   | quicksort (p::rest) = 
-      let val (smaller, bigger) = divide(p,rest)
+      let val (small, big) = divide(p,rest)
       in
-	quicksort(smaller) @ [p] @ quicksort(bigger)
+	quicksort(small) @ [p] @ quicksort(big)
       end;
+
+
+(*Testing examples*)
+
 
 fact(4,1);
 fact (5,5);
